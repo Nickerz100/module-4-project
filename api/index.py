@@ -1,5 +1,4 @@
 import requests
-import vercel
 
 def getPublicIPInfo():
     # API endpoint 
