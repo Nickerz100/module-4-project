@@ -1,17 +1,23 @@
-from flask import Flask, render_template
+import requests
 
-app = Flask(__name__)
+def getPublicIPInfo():
+    # API endpoint 
+    apiURL = "http://ip-api.com/json/"
 
-@app.route('/')
-def home():
-    className = 'cnit 381'
+    # GET request for IP address parsing
+    response = requests.get(apiURL)
+    ipInfo = response.json()
 
-    return render_template('index.html', data=className)
+    # Extract relevant information
+    ip = ipInfo['query']
+    city = ipInfo['city']
+    country = ipInfo['country']
+    isp = ipInfo['isp']
 
-@app.route('/about')
-def about():
-    return 'About'
+    # Display IP information
+    print("Public IP Address: " + ip)
+    print("City: " + city)
+    print("Country: " + country)
+    print("ISP: " + isp)
 
-@app.route('/another')
-def another():
-    return 'Another'
+getPublicIPInfo()
