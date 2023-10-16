@@ -1,8 +1,8 @@
 import requests
 
-def getPublicIPInfo():
+def getPublicIPInfo(ip):
     # API endpoint 
-    apiURL = "http://ip-api.com/json/"
+    apiURL = "http://ip-api.com/json/" + ip
 
     # GET request for IP address parsing
     response = requests.get(apiURL)
@@ -20,4 +20,5 @@ def getPublicIPInfo():
     print("Country: " + country)
     print("ISP: " + isp)
 
-getPublicIPInfo()
+iserIP = input("Enter an IP address or click ENTER to use your current IP: ")
+getPublicIPInfo(userIP)
