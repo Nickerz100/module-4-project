@@ -1,4 +1,4 @@
-name: Python Program Check
+name: Check Python Code
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  check-python-program:
+  check-python-code:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,10 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.0
+        python-version: 3.12
+
+    - name: Install dependencies
+      run: pip install requests
 
     - name: Run Python script
       run: index.py
